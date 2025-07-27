@@ -1,0 +1,260 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #E60080;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header y Logo */
+.header {
+    padding: 2rem 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+}
+
+.logo-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.logo-placeholder h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #E60080;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 3px;
+}
+
+/* Contenido principal */
+.main-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 3;
+}
+
+.message-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    text-align: center;
+    transform: perspective(1000px) rotateX(5deg);
+    transition: transform 0.3s ease;
+}
+
+.message-container:hover {
+    transform: perspective(1000px) rotateX(0deg) scale(1.02);
+}
+
+.main-message {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #E60080;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+/* Animación del libro */
+.book-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.book {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) perspective(1000px) rotateY(-15deg);
+    width: 300px;
+    height: 400px;
+    transform-style: preserve-3d;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+    border: 2px solid #ddd;
+    border-radius: 0 8px 8px 0;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    background-image: 
+        repeating-linear-gradient(
+            transparent,
+            transparent 20px,
+            rgba(230, 0, 128, 0.1) 20px,
+            rgba(230, 0, 128, 0.1) 22px
+        );
+}
+
+.page::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 15px,
+        rgba(230, 0, 128, 0.05) 15px,
+        rgba(230, 0, 128, 0.05) 17px
+    );
+}
+
+.book-spine {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(to bottom, #8B4513, #654321);
+    border-radius: 10px 0 0 10px;
+    transform: rotateY(-90deg);
+    transform-origin: right center;
+}
+
+/* Animaciones de las páginas */
+.page-1 {
+    animation: turnPage1 4s infinite ease-in-out;
+    z-index: 4;
+}
+
+.page-2 {
+    animation: turnPage2 4s infinite ease-in-out 1s;
+    z-index: 3;
+}
+
+.page-3 {
+    animation: turnPage3 4s infinite ease-in-out 2s;
+    z-index: 2;
+}
+
+.page-4 {
+    animation: turnPage4 4s infinite ease-in-out 3s;
+    z-index: 1;
+}
+
+@keyframes turnPage1 {
+    0%, 25% { transform: rotateY(0deg); }
+    50%, 75% { transform: rotateY(-180deg); }
+    100% { transform: rotateY(0deg); }
+}
+
+@keyframes turnPage2 {
+    0%, 25% { transform: rotateY(0deg); }
+    50%, 75% { transform: rotateY(-180deg); }
+    100% { transform: rotateY(0deg); }
+}
+
+@keyframes turnPage3 {
+    0%, 25% { transform: rotateY(0deg); }
+    50%, 75% { transform: rotateY(-180deg); }
+    100% { transform: rotateY(0deg); }
+}
+
+@keyframes turnPage4 {
+    0%, 25% { transform: rotateY(0deg); }
+    50%, 75% { transform: rotateY(-180deg); }
+    100% { transform: rotateY(0deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo-placeholder h1 {
+        font-size: 2rem;
+    }
+    
+    .main-message {
+        font-size: 2rem;
+    }
+    
+    .message-container {
+        padding: 2rem 2.5rem;
+    }
+    
+    .book {
+        width: 200px;
+        height: 280px;
+    }
+    
+    .header {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-placeholder h1 {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+    
+    .main-message {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .message-container {
+        padding: 1.5rem 2rem;
+        margin: 1rem;
+    }
+    
+    .book {
+        width: 150px;
+        height: 200px;
+    }
+}
+
+/* Efectos adicionales */
+.container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(230, 0, 128, 0.2) 70%,
+        rgba(180, 0, 100, 0.3) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
